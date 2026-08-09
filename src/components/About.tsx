@@ -1,0 +1,180 @@
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from '../hooks/useInView';
+import { Award, Code2, GraduationCap, Trophy } from 'lucide-react';
+
+// Count-up helper component
+const CountUp: React.FC<{ end: number; decimals?: number; duration?: number; suffix?: string }> = ({
+  end,
+  decimals = 0,
+  duration = 2000,
+  suffix = '',
+}) => {
+  const [count, setCount] = useState(0);
+  const [ref, inView] = useInView({ triggerOnce: true });
+
+  useEffect(() => {
+    if (!inView) return;
+
+    let startTime: number | null = null;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const progressRatio = Math.min(progress / duration, 1);
+      
+      // Easing function (easeOutQuad)
+      const easeValue = progressRatio * (2 - progressRatio);
+      const currentValue = easeValue * end;
+      
+      setCount(currentValue);
+
+      if (progressRatio < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [inView, end, duration]);
+
+  return (
+    <span ref={ref as React.RefObject<HTMLSpanElement>}>
+      {count.toFixed(decimals)}
+      {suffix}
+    </span>
+  );
+};
+
+export const About: React.FC = () => {
+  const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
+
+  const stats = [
+    {
+      label: 'B.Tech CGPA',
+      value: <CountUp end={8.8} decimals={1} />,
+      sub: 'Medhavi Skills Univ.',
+      icon: GraduationCap,
+      color: 'text-accent-violet border-accent-violet/20 bg-accent-violet/5',
+    },
+    {
+      label: 'Diploma CGPA',
+      value: <CountUp end={8.8} decimals={1} />,
+      sub: "St. Mary's Group",
+      icon: GraduationCap,
+      color: 'text-accent-cyan border-accent-cyan/20 bg-accent-cyan/5',
+    },
+    {
+      label: 'CodeChef Rating',
+      value: <CountUp end={1400} suffix="+" />,
+      sub: 'Competitive Coding',
+      icon: Code2,
+      color: 'text-accent-blue border-accent-blue/20 bg-accent-blue/5',
+    },
+    {
+      label: 'HackerRank Solved',
+      value: <CountUp end={150} suffix="+" />,
+      sub: 'Data Structures / Alg.',
+      icon: Trophy,
+      color: 'text-yellow-500 border-yellow-500/20 bg-yellow-500/5',
+    },
+    {
+      label: 'LeetCode Solved',
+      value: <CountUp end={30} suffix="+" />,
+      sub: 'Problem Solving',
+      icon: Code2,
+      color: 'text-green-500 border-green-500/20 bg-green-500/5',
+    },
+    {
+      label: 'Hackathon Rank',
+      value: <CountUp end={2} suffix="nd Place" />,
+      sub: 'College Hackathon',
+      icon: Award,
+      color: 'text-orange-500 border-orange-500/20 bg-orange-500/5',
+    },
+  ];
+
+  return (
+    <section id="about" className="py-24 px-6 relative max-w-7xl mx-auto">
+      {/* Title */}
+      <div className="flex flex-col items-start text-left mb-12">
+        <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
+          01 / Biography
+        </span>
+        <h2 className="text-2xl md:text-4xl font-display font-bold text-text-primary">
+          About Me
+        </h2>
+        <div className="h-[2px] w-12 bg-gradient-to-r from-accent-cyan to-accent-violet mt-3" />
+      </div>
+
+      <div 
+        ref={ref}
+        className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
+      >
+        {/* Story Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="lg:col-span-6 text-left space-y-6 text-text-secondary text-sm md:text-base font-light leading-relaxed"
+        >
+          <p>
+            I am currently pursuing a{' '}
+            <strong className="text-text-primary font-medium">
+              Bachelor of Technology in Computer Science and Engineering
+            </strong>{' '}
+            at Medhavi Skills University, Sikkim (Expected graduation: 2029). Prior to my B.Tech studies, I earned my{' '}
+            <strong className="text-text-primary font-medium">
+              Diploma in Computer Science and Engineering
+            </strong>{' '}
+            from St. Mary's Group of Institutions Hyderabad.
+          </p>
+          <p>
+            My main focus is in{' '}
+            <strong className="text-text-primary font-medium">Full-Stack Web Development</strong>, 
+            where I enjoy building secure, responsive MERN stack architectures. Alongside frontend and backend engineering, I explore areas like{' '}
+            <strong className="text-text-primary font-medium">Artificial Intelligence, Computer Vision</strong> (gesture tracking and image processing), automation scripts, and blockchain fundamentals.
+          </p>
+          <p>
+            I am also an active{' '}
+            <strong className="text-text-primary font-medium">Competitive Programmer</strong>. I regularly test my problem-solving skills on platforms like CodeChef and HackerRank, optimizing code execution speed and memory footprints. I love turning complex conceptual tasks into elegant, working systems.
+          </p>
+        </motion.div>
+
+        {/* Stats Grid */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-4"
+        >
+          {stats.map((stat, idx) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={idx}
+                className="p-4 rounded-xl glass-panel bg-surface-primary hover:bg-surface-secondary hover:border-white/15 transition-all duration-300 flex flex-col items-start text-left gap-3"
+              >
+                <div className={`p-2 rounded-lg border ${stat.color}`}>
+                  <Icon className="w-4 h-4" />
+                </div>
+                <div className="space-y-0.5">
+                  <div className="text-lg md:text-xl font-display font-bold text-text-primary tracking-tight">
+                    {stat.value}
+                  </div>
+                  <div className="text-[11px] font-medium text-text-primary/95 font-sans">
+                    {stat.label}
+                  </div>
+                  <div className="text-[9px] font-mono text-text-secondary/60">
+                    {stat.sub}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+};

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#22D3EE" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="20" fill="#0D0D0D" stroke="url(#glow)" stroke-width="4"/>
+  <text x="50%" y="58%" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#F5F5F5" dominant-baseline="middle" text-anchor="middle" letter-spacing="1">KG</text>
+  <text x="20%" y="56%" font-family="system-ui, sans-serif" font-size="34" font-weight="light" fill="#8B5CF6" dominant-baseline="middle" text-anchor="middle">[</text>
+  <text x="80%" y="56%" font-family="system-ui, sans-serif" font-size="34" font-weight="light" fill="#8B5CF6" dominant-baseline="middle" text-anchor="middle">]</text>
+</svg>

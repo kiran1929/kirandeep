@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-bg-dark: #050505;
+  --color-bg-darker: #020202;
+  --color-surface-primary: #0d0d0d;
+  --color-surface-secondary: #121212;
+  --color-surface-tertiary: #18181b;
+  --color-border-primary: rgba(255, 255, 255, 0.08);
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #a1a1aa;
+  
+  --color-accent-violet: #8b5cf6;
+  --color-accent-cyan: #22d3ee;
+  --color-accent-blue: #3b82f6;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #050505;
+    color: #f5f5f5;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Focus ring styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid #8b5cf6;
+    outline-offset: 4px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f1f23;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #27272a;
+}
+
+/* Glassmorphism subtle utilities */
+.glass-panel {
+  background: rgba(13, 13, 13, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Tech Grid Background */
+.tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.tech-grid-fine {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Glowing text gradients */
+.text-glow-violet {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.25);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.25);
+}
+
+/* Custom terminal scanlines */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 10;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Reduced motion preference overrides */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .custom-cursor {
+    display: none !important;
+  }
+}
