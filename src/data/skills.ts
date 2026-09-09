@@ -4,41 +4,40 @@ export interface Skill {
 }
 
 export const skills: Skill[] = [
-  // Languages
-  { name: 'C', category: 'languages' },
-  { name: 'C++', category: 'languages' },
   { name: 'Java', category: 'languages' },
+  { name: 'C++', category: 'languages' },
+  { name: 'C', category: 'languages' },
   { name: 'Python', category: 'languages' },
   { name: 'JavaScript', category: 'languages' },
   { name: 'SQL', category: 'languages' },
 
-  // Frontend
+  { name: 'React.js', category: 'frontend' },
   { name: 'HTML5', category: 'frontend' },
   { name: 'CSS3', category: 'frontend' },
   { name: 'Bootstrap', category: 'frontend' },
-  { name: 'React.js', category: 'frontend' },
+  { name: 'Next.js', category: 'frontend' },
 
-  // Backend
   { name: 'Node.js', category: 'backend' },
   { name: 'Express.js', category: 'backend' },
   { name: 'REST APIs', category: 'backend' },
+  { name: 'Prisma', category: 'backend' },
 
-  // Databases
   { name: 'MongoDB', category: 'databases' },
   { name: 'MySQL', category: 'databases' },
+  { name: 'PostgreSQL', category: 'databases' },
 
-  // Developer Tools
   { name: 'Git', category: 'tools' },
   { name: 'GitHub', category: 'tools' },
-  { name: 'VS Code', category: 'tools' },
-  { name: 'Postman', category: 'tools' },
   { name: 'Docker', category: 'tools' },
+  { name: 'Postman', category: 'tools' },
+  { name: 'VS Code', category: 'tools' },
+  { name: 'Vercel', category: 'tools' },
 
-  // Core Concepts
   { name: 'Data Structures & Algorithms', category: 'concepts' },
   { name: 'Object-Oriented Programming', category: 'concepts' },
   { name: 'JWT Authentication', category: 'concepts' },
-  { name: 'Blockchain Fundamentals', category: 'concepts' }
+  { name: 'REST API Design', category: 'concepts' },
+  { name: 'Blockchain Fundamentals', category: 'concepts' },
 ];
 
 export const skillCategories = {

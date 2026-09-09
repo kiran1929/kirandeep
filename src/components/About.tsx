@@ -96,7 +96,7 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-24 px-6 relative max-w-7xl mx-auto">
+    <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
       {/* Title */}
       <div className="flex flex-col items-start text-left mb-12">
         <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
@@ -120,25 +120,27 @@ export const About: React.FC = () => {
           className="lg:col-span-6 text-left space-y-6 text-text-secondary text-sm md:text-base font-light leading-relaxed"
         >
           <p>
-            I am currently pursuing a{' '}
+            I am Kirandeep Gudepu, a Computer Science student and aspiring software engineer based in Bengaluru. I am pursuing a{' '}
             <strong className="text-text-primary font-medium">
-              Bachelor of Technology in Computer Science and Engineering
+              B.Tech in Computer Science and Engineering
             </strong>{' '}
-            at Medhavi Skills University, Sikkim (Expected graduation: 2029). Prior to my B.Tech studies, I earned my{' '}
+            at Medhavi Skills University through PW Institute of Innovation (Expected 2029). Before that I completed a{' '}
             <strong className="text-text-primary font-medium">
               Diploma in Computer Science and Engineering
             </strong>{' '}
-            from St. Mary's Group of Institutions Hyderabad.
+            at St. Mary's Group of Institutions, Hyderabad (CGPA 8.8).
           </p>
           <p>
-            My main focus is in{' '}
-            <strong className="text-text-primary font-medium">Full-Stack Web Development</strong>, 
-            where I enjoy building secure, responsive MERN stack architectures. Alongside frontend and backend engineering, I explore areas like{' '}
-            <strong className="text-text-primary font-medium">Artificial Intelligence, Computer Vision</strong> (gesture tracking and image processing), automation scripts, and blockchain fundamentals.
+            I focus on{' '}
+            <strong className="text-text-primary font-medium">Full-Stack Development</strong>
+            {' '}with Java, JavaScript, the MERN stack, and Next.js. Recent work includes InternScope AI, Garuda Wish Wall, and computer-vision tools. I also explore{' '}
+            <strong className="text-text-primary font-medium">AI, REST APIs, JWT auth, and blockchain fundamentals</strong>.
           </p>
           <p>
-            I am also an active{' '}
-            <strong className="text-text-primary font-medium">Competitive Programmer</strong>. I regularly test my problem-solving skills on platforms like CodeChef and HackerRank, optimizing code execution speed and memory footprints. I love turning complex conceptual tasks into elegant, working systems.
+            I practice DSA consistently — 150+ problems on{' '}
+            <a href="https://www.hackerrank.com/profile/kirandeep_gudepu" target="_blank" rel="noopener noreferrer" className="text-text-primary font-medium underline decoration-accent-cyan/40 hover:decoration-accent-cyan">HackerRank</a>,{' '}
+            <a href="https://codeforces.com/profile/kiran1929" target="_blank" rel="noopener noreferrer" className="text-text-primary font-medium underline decoration-accent-cyan/40 hover:decoration-accent-cyan">Codeforces</a> (853 rating),{' '}
+            <a href="https://leetcode.com/u/thor_kiran/" target="_blank" rel="noopener noreferrer" className="text-text-primary font-medium underline decoration-accent-cyan/40 hover:decoration-accent-cyan">LeetCode</a> (30+), and 1400+ on CodeChef. I believe consistency beats talent.
           </p>
         </motion.div>
 
@@ -147,7 +149,7 @@ export const About: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-4"
+          className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4"
         >
           {stats.map((stat, idx) => {
             const Icon = stat.icon;

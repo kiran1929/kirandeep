@@ -112,42 +112,42 @@ export default function App() {
         <Hero />
 
         {/* Separator lines */}
-        <div className="w-full max-w-7xl px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="w-full max-w-7xl px-4 sm:px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* About Section */}
         <About />
 
-        <div className="w-full max-w-7xl px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="w-full max-w-7xl px-4 sm:px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* Tech Stack Section */}
         <Skills />
 
-        <div className="w-full max-w-7xl px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="w-full max-w-7xl px-4 sm:px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* Projects Section */}
         <Projects />
 
-        <div className="w-full max-w-7xl px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="w-full max-w-7xl px-4 sm:px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* Experience Section */}
         <Experience />
 
-        <div className="w-full max-w-7xl px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="w-full max-w-7xl px-4 sm:px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* Achievements Section */}
         <Achievements />
 
-        <div className="w-full max-w-7xl px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="w-full max-w-7xl px-4 sm:px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* Education Section */}
         <Education />
 
-        <div className="w-full max-w-7xl px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="w-full max-w-7xl px-4 sm:px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* Certifications Section */}
         <Certifications />
 
-        <div className="w-full max-w-7xl px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="w-full max-w-7xl px-4 sm:px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* Contact Section */}
         <Contact />
@@ -169,7 +169,7 @@ export default function App() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="text-center p-8 max-w-md border border-accent-cyan/35 rounded-xl bg-surface-primary shadow-2xl relative overflow-hidden"
+              className="text-center p-5 sm:p-8 max-w-md mx-4 border border-accent-cyan/35 rounded-xl bg-surface-primary shadow-2xl relative overflow-hidden"
             >
               {/* Matrix-like falling scanlines overlay */}
               <div className="absolute inset-0 tech-grid opacity-20" />

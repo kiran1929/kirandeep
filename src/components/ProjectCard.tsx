@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { type Project } from '../data/projects';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { Github } from './Icons';
+import { displayHost } from '../lib/utils';
 
 interface ProjectCardProps {
   project: Project;
@@ -13,6 +14,24 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
   // Render responsive, abstract mockups for projects to maintain a premium look
   const renderVisual = () => {
     switch (project.visualType) {
+      case 'internscope':
+        return (
+          <div className="w-full h-full relative overflow-hidden bg-black/60 rounded-t-xl border-b border-white/5 p-4 flex flex-col gap-2.5 font-mono text-[9px] text-left">
+            <div className="flex items-center justify-between border-b border-white/5 pb-2">
+              <span className="text-text-secondary/70 uppercase tracking-widest">InternScope AI</span>
+              <span className="text-emerald-400 font-bold">337+ LISTINGS</span>
+            </div>
+            <div className="p-3 rounded-lg bg-surface-secondary border border-accent-violet/20 space-y-1">
+              <span className="text-text-secondary/50 text-[8px] uppercase tracking-wider">Match Score</span>
+              <span className="text-sm font-sans font-bold text-accent-cyan tracking-tight">92% ATS Fit</span>
+            </div>
+            <div className="space-y-1.5 text-text-secondary/80">
+              <div className="flex justify-between"><span>Greenhouse / Lever / Ashby</span><span className="text-accent-cyan">SYNCED</span></div>
+              <div className="flex justify-between"><span>Mock interview · STAR</span><span className="text-accent-violet">READY</span></div>
+            </div>
+          </div>
+        );
+
       case 'wish-wall':
         return (
           <div className="w-full h-full relative overflow-hidden bg-black/60 rounded-t-xl border-b border-white/5 p-4 flex flex-col gap-2.5 font-sans">
@@ -40,29 +59,23 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
           </div>
         );
 
-      case 'pay':
+      case 'team-portfolio':
         return (
-          <div className="w-full h-full relative overflow-hidden bg-black/60 rounded-t-xl border-b border-white/5 p-4 flex flex-col gap-3 font-mono text-[9px]">
-            {/* Mock Ledger Head */}
+          <div className="w-full h-full relative overflow-hidden bg-black/60 rounded-t-xl border-b border-white/5 p-4 flex flex-col gap-2.5 font-sans text-left">
             <div className="flex items-center justify-between border-b border-white/5 pb-2">
-              <span className="text-text-secondary/70">GARUDA_PAY_v1.0</span>
-              <span className="text-emerald-400 font-bold">SECURE CONNECTIONS</span>
+              <span className="text-[9px] font-mono tracking-wider uppercase text-text-secondary">DevForge</span>
+              <span className="text-[8px] font-mono text-accent-cyan">6 BUILDERS</span>
             </div>
-            {/* Balance Card */}
-            <div className="p-3 rounded-lg bg-surface-secondary border border-accent-cyan/20 flex flex-col items-start gap-1">
-              <span className="text-text-secondary/50 text-[8px] uppercase tracking-wider">Wallet Balance</span>
-              <span className="text-sm font-sans font-bold text-accent-cyan tracking-tight">₹48,250.00</span>
+            <div className="space-y-1">
+              <span className="text-[11px] font-display font-bold text-text-primary">Building Modern Digital Experiences</span>
+              <span className="text-[8px] font-mono text-text-secondary/60">Team · Projects · Contact</span>
             </div>
-            {/* Mini Ledger */}
-            <div className="space-y-1.5">
-              <div className="flex justify-between text-text-secondary/80">
-                <span>TXN_8402_RAHUL</span>
-                <span className="text-red-400">-₹1,500.00</span>
-              </div>
-              <div className="flex justify-between text-text-secondary/80">
-                <span>TXN_9012_AMIT</span>
-                <span className="text-emerald-400">+₹5,000.00</span>
-              </div>
+            <div className="grid grid-cols-3 gap-1.5 mt-auto">
+              {['Arjun', 'Priya', 'Kevin'].map((name) => (
+                <div key={name} className="rounded-md bg-surface-secondary border border-white/5 px-1.5 py-1.5 text-center">
+                  <span className="text-[8px] font-mono text-text-secondary">{name}</span>
+                </div>
+              ))}
             </div>
           </div>
         );
@@ -169,9 +182,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
           </p>
         </div>
 
-        {/* Tech Badges & Placeholder links */}
         <div className="w-full space-y-4">
-          {/* Badges */}
           <div className="flex flex-wrap gap-1.5">
             {project.technologies.slice(0, 4).map((tech) => (
               <span
@@ -188,18 +199,30 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
             )}
           </div>
 
-          {/* Links Section */}
-          <div className="flex items-center gap-3 text-[10px] font-mono text-text-secondary/60 pt-2 border-t border-white/5">
-            {/* Note that github link is placeholder */}
-            <span className="flex items-center gap-1 hover:text-text-primary transition-colors">
-              <Github className="w-3.5 h-3.5" />
-              <span>PROJECT_GITHUB_URL</span>
-            </span>
+          <div className="flex flex-col gap-2 text-[10px] font-mono text-text-secondary/70 pt-2 border-t border-white/5">
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-start gap-1.5 hover:text-text-primary transition-colors min-h-8"
+              >
+                <Github className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                <span className="break-all leading-snug">{project.githubUrl.replace(/^https?:\/\//, '')}</span>
+              </a>
+            )}
             {project.liveUrl && (
-              <span className="flex items-center gap-1 hover:text-text-primary transition-colors">
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>PROJECT_LIVE_URL</span>
-              </span>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-start gap-1.5 text-accent-cyan hover:text-text-primary transition-colors min-h-8"
+              >
+                <ExternalLink className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                <span className="break-all leading-snug">{displayHost(project.liveUrl)}</span>
+              </a>
             )}
           </div>
         </div>

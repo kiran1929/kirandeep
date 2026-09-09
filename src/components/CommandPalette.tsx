@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Hash, CornerDownLeft, X, Mail } from 'lucide-react';
-import { Github, Linkedin } from './Icons';
+import { Search, Hash, CornerDownLeft, X, Mail, FileDown } from 'lucide-react';
+import { Github, Linkedin, HackerRank, Codeforces, LeetCode } from './Icons';
+import { socialLinks } from '../data/social';
 
 interface CommandItem {
   id: string;
@@ -74,21 +75,49 @@ export const CommandPalette: React.FC = () => {
       name: 'Open GitHub Profile',
       icon: Github,
       category: 'Social',
-      action: () => window.open('https://github.com/kiran1929', '_blank'),
+      action: () => window.open(socialLinks.github, '_blank'),
     },
     {
       id: 'linkedin',
       name: 'Open LinkedIn Profile',
       icon: Linkedin,
       category: 'Social',
-      action: () => window.open('https://linkedin.com/in/kirandeep-gudepu', '_blank'),
+      action: () => window.open(socialLinks.linkedin, '_blank'),
+    },
+    {
+      id: 'hackerrank',
+      name: 'Open HackerRank Profile',
+      icon: HackerRank,
+      category: 'Social',
+      action: () => window.open(socialLinks.hackerrank, '_blank'),
+    },
+    {
+      id: 'codeforces',
+      name: 'Open Codeforces Profile',
+      icon: Codeforces,
+      category: 'Social',
+      action: () => window.open(socialLinks.codeforces, '_blank'),
+    },
+    {
+      id: 'leetcode',
+      name: 'Open LeetCode Profile',
+      icon: LeetCode,
+      category: 'Social',
+      action: () => window.open(socialLinks.leetcode, '_blank'),
     },
     {
       id: 'email',
       name: 'Send Email',
       icon: Mail,
       category: 'Actions',
-      action: () => window.location.href = 'mailto:gudepukirandeep@gmail.com',
+      action: () => { window.location.href = `mailto:${socialLinks.email}`; },
+    },
+    {
+      id: 'resume',
+      name: 'Download Resume',
+      icon: FileDown,
+      category: 'Actions',
+      action: () => window.open(socialLinks.resume, '_blank'),
     },
   ];
 
@@ -192,7 +221,7 @@ export const CommandPalette: React.FC = () => {
 
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4">
+          <div className="fixed inset-0 z-50 flex items-start justify-center pt-[8vh] sm:pt-[15vh] px-3 sm:px-4">
             {/* Backdrop Blur */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -208,7 +237,7 @@ export const CommandPalette: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="relative w-full max-w-xl glass-panel rounded-xl overflow-hidden shadow-2xl border-white/10 z-10 flex flex-col max-h-[50vh]"
+              className="relative w-full max-w-xl glass-panel rounded-xl overflow-hidden shadow-2xl border-white/10 z-10 flex flex-col max-h-[70dvh] sm:max-h-[50vh]"
             >
               {/* Search Header */}
               <div className="flex items-center gap-3 px-4 py-3 border-b border-border-primary">

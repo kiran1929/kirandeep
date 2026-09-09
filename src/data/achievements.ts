@@ -1,8 +1,10 @@
+import { socialLinks } from './social';
+
 export interface Achievement {
   id: string;
   title: string;
   value: string;
-  numberValue?: number; // Used for count-up animation
+  numberValue?: number;
   suffix?: string;
   description: string;
   category: 'academic' | 'competitive-programming' | 'hackathon';
@@ -23,7 +25,7 @@ export const achievements: Achievement[] = [
     value: '1400+',
     numberValue: 1400,
     suffix: '+',
-    description: 'Active participant in competitive coding contests, achieving a 1400+ rating.',
+    description: 'Achieved a 1400+ rating on CodeChef through consistent competitive programming.',
     category: 'competitive-programming'
   },
   {
@@ -31,8 +33,9 @@ export const achievements: Achievement[] = [
     title: 'Codeforces Rating',
     value: '853',
     numberValue: 853,
-    description: 'Engaged in algorithm challenges and contested rounds on Codeforces.',
-    category: 'competitive-programming'
+    description: 'Active on Codeforces contests and practice, currently at an 853 rating.',
+    category: 'competitive-programming',
+    link: socialLinks.codeforces
   },
   {
     id: 'hackerrank',
@@ -40,8 +43,9 @@ export const achievements: Achievement[] = [
     value: '150+',
     numberValue: 150,
     suffix: '+',
-    description: 'Solved over 150 programming problems across various domains like data structures and algorithms.',
-    category: 'competitive-programming'
+    description: 'Solved 150+ problems on HackerRank across data structures and algorithms.',
+    category: 'competitive-programming',
+    link: socialLinks.hackerrank
   },
   {
     id: 'leetcode',
@@ -49,8 +53,9 @@ export const achievements: Achievement[] = [
     value: '30+',
     numberValue: 30,
     suffix: '+',
-    description: 'Solved algorithmic problems focusing on optimizing space and time complexity.',
-    category: 'competitive-programming'
+    description: 'Solved 30+ algorithmic problems on LeetCode with a focus on interview patterns.',
+    category: 'competitive-programming',
+    link: socialLinks.leetcode
   },
   {
     id: 'hackathon',
@@ -58,7 +63,7 @@ export const achievements: Achievement[] = [
     value: '2nd Place',
     numberValue: 2,
     suffix: 'nd Place',
-    description: 'Secured 2nd Place in a college-level hackathon for collaborative software development.',
+    description: 'Secured 2nd Place in a college-level hackathon for an innovative software solution.',
     category: 'hackathon'
   }
 ];

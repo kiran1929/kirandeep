@@ -10,11 +10,11 @@ export interface EducationEntry {
 export const educationList: EducationEntry[] = [
   {
     degree: 'Bachelor of Technology in Computer Science and Engineering',
-    institution: 'Medhavi Skills University',
-    location: 'Sikkim',
+    institution: 'Medhavi Skills University (PW Institute of Innovation)',
+    location: 'Sikkim / Bengaluru',
     cgpa: '8.8',
     duration: 'August 2025 – Expected 2029',
-    description: 'Focusing on core computer science subjects, software engineering, databases, algorithms, and exploring applications in AI and computer vision.'
+    description: 'Industry-focused CSE program covering software engineering, databases, algorithms, and building real-world AI and full-stack applications.'
   },
   {
     degree: 'Diploma in Computer Science and Engineering',
@@ -22,6 +22,6 @@ export const educationList: EducationEntry[] = [
     location: 'Hyderabad',
     cgpa: '8.8',
     duration: '2022 – 2025',
-    description: 'Acquired foundational knowledge in programming (C, C++, Java), database systems, and web technologies.'
+    description: 'Built foundations in C, C++, Java, databases, and web technologies, with industrial training in Python full-stack development.'
   }
 ];

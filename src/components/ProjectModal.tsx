@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { X, ExternalLink, Terminal, Layers } from 'lucide-react';
 import { Github } from './Icons';
 import { type Project } from '../data/projects';
+import { displayHost } from '../lib/utils';
 
 interface ProjectModalProps {
   project: Project;
@@ -28,17 +29,23 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   // Derived Problem/Solution summaries based on project info
   const getProblemAndSolution = () => {
     switch (project.id) {
+      case 'internscope-ai':
+        return {
+          problem: 'Internship hunting is fragmented across dozens of company career pages, so students miss roles that never hit generic job boards.',
+          solution: 'Co-built an aggregator that pulls internship-only listings from 86+ ATS career pages, scores resumes with ATS keyword suggestions, and adds mock interviews plus application tracking.',
+          architecture: 'Career Page Crawlers ──> Trigger.dev Sync ──> Prisma / Neon Postgres ──> Next.js App (Clerk Auth)'
+        };
       case 'garuda-wish-wall':
         return {
           problem: 'Social platforms often suffer from privacy issues and identity exposure, preventing users from expressing their authentic thoughts, fears, or aspirations without fear of judgment.',
           solution: 'Designed and built a fully anonymous posting wall using MERN stack where users can publish wishes securely. Handled state management carefully to keep credentials isolated and protect data anonymity via secure backend RESTful APIs.',
           architecture: 'Client-side SPA (React) ──[HTTPS]──> Express API Gateway ──> MongoDB Ledger'
         };
-      case 'garuda-pay':
+      case 'team-portfolio':
         return {
-          problem: 'Handling transaction records, currency debits/credits, and wallet ledgers safely requires robust transaction verification systems to prevent racing conditions and balance discrepancies.',
-          solution: 'Created atomic ledger updates using MongoDB transactions. Constructed Node.js/Express verification endpoints that validate debit allowances and credit mappings before generating receipts.',
-          architecture: 'Wallet Client ──[JWT Validation]──> API Controller ──[Mongoose Session Transaction]──> Mongo Database'
+          problem: 'Student teams often ship strong projects but lack a single public site that introduces the group, work, and how to reach them.',
+          solution: 'Built DevForge, a responsive team portfolio with member profiles, project filters, theme switching, and a contact flow so collaborators can find the crew quickly.',
+          architecture: 'Static Pages (HTML/CSS/JS) ──> Theme Toggle + Section Routing ──> Vercel CDN'
         };
       case 'hand-gesture-recognition':
         return {
@@ -80,7 +87,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 15 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        className="relative w-full max-w-2xl max-h-[85vh] bg-surface-primary border border-white/10 rounded-xl overflow-y-auto shadow-2xl z-10 p-6 flex flex-col gap-6 pointer-events-auto"
+        className="relative w-full max-w-2xl max-h-[90dvh] bg-surface-primary border border-white/10 rounded-xl overflow-y-auto shadow-2xl z-10 p-4 sm:p-6 flex flex-col gap-6 pointer-events-auto"
       >
         {/* Close Button */}
         <button
@@ -158,7 +165,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               <Terminal className="w-3.5 h-3.5" />
               <span>Logical System Pipeline</span>
             </div>
-            <div className="text-[9px] font-mono text-accent-cyan p-2 bg-black/60 rounded border border-white/5 overflow-x-auto whitespace-nowrap">
+            <div className="text-[9px] font-mono text-accent-cyan p-2 bg-black/60 rounded border border-white/5 overflow-x-auto whitespace-pre-wrap sm:whitespace-nowrap break-words">
               {architecture}
             </div>
           </div>
@@ -184,21 +191,29 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         {/* Footer Connections */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4 border-t border-white/5">
-          <div className="flex flex-wrap gap-4 text-[10px] font-mono text-text-secondary/60">
-            <span className="flex items-center gap-1">
-              <Github className="w-3.5 h-3.5" />
-              <span>{project.githubUrl}</span>
-            </span>
-            {project.liveUrl && (
-              <span className="flex items-center gap-1">
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>{project.liveUrl}</span>
-              </span>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 text-[10px] font-mono text-text-secondary/80">
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 hover:text-accent-cyan transition-colors min-h-10"
+              >
+                <Github className="w-3.5 h-3.5 shrink-0" />
+                <span className="break-all">{displayHost(project.githubUrl)}/{project.githubUrl.split('/').pop()}</span>
+              </a>
             )}
-          </div>
-          
-          <div className="text-[9px] font-mono text-text-secondary/30 italic">
-            * GitHub URLs are placeholders. Real source is private.
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 hover:text-accent-cyan transition-colors min-h-10"
+              >
+                <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                <span className="break-all">{displayHost(project.liveUrl)}</span>
+              </a>
+            )}
           </div>
         </div>
       </motion.div>

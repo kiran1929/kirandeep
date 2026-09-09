@@ -78,7 +78,7 @@ export const Achievements: React.FC = () => {
   };
 
   return (
-    <section id="achievements" className="py-24 px-6 relative max-w-7xl mx-auto">
+    <section id="achievements" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
       {/* Title */}
       <div className="flex flex-col items-start text-left mb-12">
         <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
@@ -136,9 +136,21 @@ export const Achievements: React.FC = () => {
               </div>
 
               {/* Bottom Technical Tag */}
-              <div className="flex items-center gap-1.5 text-[9px] font-mono text-text-secondary/40 border-t border-white/5 pt-3 w-full">
-                <Zap className="w-3 h-3 text-accent-cyan/60" />
-                <span className="uppercase tracking-wider">Verified Practice Credentials</span>
+              <div className="flex items-center justify-between gap-1.5 text-[9px] font-mono text-text-secondary/40 border-t border-white/5 pt-3 w-full">
+                <span className="flex items-center gap-1.5">
+                  <Zap className="w-3 h-3 text-accent-cyan/60" />
+                  <span className="uppercase tracking-wider">Verified Practice Credentials</span>
+                </span>
+                {ach.link && (
+                  <a
+                    href={ach.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent-cyan hover:text-text-primary uppercase tracking-wider"
+                  >
+                    View profile
+                  </a>
+                )}
               </div>
             </motion.div>
           );

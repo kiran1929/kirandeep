@@ -42,3 +42,64 @@ export const Linkedin: React.FC<IconProps> = ({ className, ...props }) => (
     <circle cx="4" cy="4" r="2" />
   </svg>
 );
+
+export const LeetCode: React.FC<IconProps> = ({ className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M9 18 3 12l6-6" />
+    <path d="m15 6 6 6-6 6" />
+    <path d="M14 4 10 20" />
+  </svg>
+);
+
+export const Codeforces: React.FC<IconProps> = ({ className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <rect x="3" y="10" width="4" height="10" rx="1" />
+    <rect x="10" y="4" width="4" height="16" rx="1" />
+    <rect x="17" y="8" width="4" height="12" rx="1" />
+  </svg>
+);
+
+export const HackerRank: React.FC<IconProps> = ({ className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z" />
+    <path d="M9 8v8" />
+    <path d="M15 8v8" />
+    <path d="M9 12h6" />
+  </svg>
+);

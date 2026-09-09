@@ -27,7 +27,7 @@ export const Certifications: React.FC = () => {
   };
 
   return (
-    <section id="certifications" className="py-24 px-6 relative max-w-7xl mx-auto">
+    <section id="certifications" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
       {/* Title */}
       <div className="flex flex-col items-start text-left mb-12">
         <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">

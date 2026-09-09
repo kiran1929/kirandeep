@@ -8,7 +8,7 @@ export const Education: React.FC = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
-    <section id="education" className="py-24 px-6 relative max-w-7xl mx-auto">
+    <section id="education" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
       {/* Title */}
       <div className="flex flex-col items-start text-left mb-12">
         <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">

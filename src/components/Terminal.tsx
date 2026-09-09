@@ -48,25 +48,25 @@ export const Terminal: React.FC = () => {
         break;
       case 'about':
         newHistory.push({
-          text: 'Kirandeep Gudepu | Full-Stack Developer & AI Enthusiast\n----------------------------------------------------\n- Currently pursuing Bachelor of Technology in CSE @ Medhavi Skills University.\n- Completed Diploma in Computer Science & Engineering @ St. Mary\'s Group.\n- Passionate about Web Apps, Computer Vision, and Backend Architectures.\n- Focused on writing optimized code and solving complex algorithmic problems.',
+          text: 'Kirandeep Gudepu | Full-Stack Developer & Problem Solver\n----------------------------------------------------\n- B.Tech CSE @ Medhavi Skills University (PW Institute of Innovation), Expected 2029.\n- Diploma in CSE @ St. Mary\'s Group of Institutions, Hyderabad (CGPA 8.8).\n- Builds MERN / Next.js apps, AI tools, and computer-vision projects.\n- DSA practice across HackerRank, Codeforces, LeetCode, and CodeChef.',
           type: 'output',
         });
         break;
       case 'skills':
         newHistory.push({
-          text: 'Languages : C, C++, Java, Python, JavaScript, SQL\nFrontend  : HTML5, CSS3, React.js, Bootstrap\nBackend   : Node.js, Express.js, REST APIs\nDatabases : MongoDB, MySQL\nDevOps    : Git, GitHub, Docker\nConcepts  : DSA, OOPs, JWT, Blockchain Basics',
+          text: 'Languages : Java, C++, C, Python, JavaScript, SQL\nFrontend  : React.js, Next.js, HTML5, CSS3, Bootstrap\nBackend   : Node.js, Express.js, REST APIs, Prisma\nDatabases : MongoDB, MySQL, PostgreSQL\nTools     : Git, GitHub, Docker, Postman, Vercel\nConcepts  : DSA, OOP, JWT, REST API Design, Blockchain',
           type: 'output',
         });
         break;
       case 'projects':
         newHistory.push({
-          text: '1. Garuda Wish Wall  - Fullstack social wall for anonymous wishes (MERN)\n2. Garuda Pay        - Fintech digital ledger wallet and payment platform (Node/Express/Mongo)\n3. Hand Gesture      - Computer vision app recognizing hand tracking landmarks (Python/OpenCV/MediaPipe)\n4. AI Assistant      - Desktop system command executor via voice/text (Python/Speech-to-Text)',
+          text: '1. InternScope AI    - https://internscope-ai.vercel.app/\n2. Garuda Wish Wall  - https://garuda-wish-wall-latest.vercel.app/\n3. DevForge Team     - https://team-portfolio-ebon-omega.vercel.app/\n4. Hand Gesture      - Real-time landmark recognition (Python/OpenCV)\n5. AI Assistant      - Voice/text desktop command runner (Python)',
           type: 'output',
         });
         break;
       case 'contact':
         newHistory.push({
-          text: 'Email    : gudepukirandeep@gmail.com\nLinkedIn : linkedin.com/in/kirandeep-gudepu\nGitHub   : github.com/kiran1929\nPhone    : +91 9063090446',
+          text: 'Email      : gudepukirandeep@gmail.com\nLinkedIn   : https://www.linkedin.com/in/kirandeep-gudepu/\nGitHub     : https://github.com/kiran1929\nHackerRank : https://www.hackerrank.com/profile/kirandeep_gudepu\nCodeforces : https://codeforces.com/profile/kiran1929\nLeetCode   : https://leetcode.com/u/thor_kiran/\nPhone      : +91 9063090446',
           type: 'output',
         });
         break;
@@ -95,7 +95,7 @@ export const Terminal: React.FC = () => {
   return (
     <div 
       onClick={focusInput}
-      className="w-full max-w-lg h-80 rounded-xl overflow-hidden glass-panel border-white/10 flex flex-col font-mono text-xs text-text-primary shadow-2xl cursor-text scanlines"
+      className="w-full max-w-lg h-56 sm:h-80 rounded-xl overflow-hidden glass-panel border-white/10 flex flex-col font-mono text-[11px] sm:text-xs text-text-primary shadow-2xl cursor-text scanlines min-w-0"
     >
       {/* Terminal Title Bar */}
       <div className="flex items-center justify-between px-4 py-3 bg-black/40 border-b border-border-primary select-none">
@@ -106,7 +106,7 @@ export const Terminal: React.FC = () => {
         </div>
         <div className="flex items-center gap-1.5 text-text-secondary/70">
           <TerminalIcon className="w-3.5 h-3.5" />
-          <span>zsh - guest@kirandeep-gudepu</span>
+          <span className="hidden sm:inline truncate">zsh — kirandeep</span>
         </div>
         <div className="w-14" /> {/* Spacer */}
       </div>
@@ -126,7 +126,7 @@ export const Terminal: React.FC = () => {
           }
           if (line.type === 'output') {
             return (
-              <div key={idx} className="text-text-secondary whitespace-pre-wrap leading-relaxed">
+              <div key={idx} className="text-text-secondary whitespace-pre-wrap break-words leading-relaxed">
                 {line.text}
               </div>
             );
@@ -168,7 +168,8 @@ export const Terminal: React.FC = () => {
       {/* Terminal Footer */}
       <div className="px-4 py-2 border-t border-border-primary bg-black/20 flex items-center justify-between text-[10px] text-text-secondary/50 select-none">
         <span>Active shell: /bin/zsh</span>
-        <span>Cmd+K for site menu</span>
+        <span className="hidden sm:inline">Cmd+K for site menu</span>
+        <span className="sm:hidden">type help</span>
       </div>
     </div>
   );

@@ -60,7 +60,7 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-24 px-6 relative max-w-7xl mx-auto">
+    <section id="skills" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
       {/* Title */}
       <div className="flex flex-col items-start text-left mb-12">
         <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
@@ -98,7 +98,8 @@ export const Skills: React.FC = () => {
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
-              <span>{skillCategories[cat]}</span>
+              <span className="hidden sm:inline">{skillCategories[cat]}</span>
+              <span className="sm:hidden">{cat}</span>
             </button>
           );
         })}
