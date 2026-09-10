@@ -1,11 +1,28 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ChevronRight, FileDown } from 'lucide-react';
 import { Github, Linkedin } from './Icons';
 import { Terminal } from './Terminal';
 import { socialLinks } from '../data/social';
 
+const rotatingPhrases = [
+  'intelligent applications.',
+  'internship platforms.',
+  'full-stack products.',
+];
+
 export const Hero: React.FC = () => {
+  const reduceMotion = useReducedMotion();
+  const [phraseIndex, setPhraseIndex] = useState(0);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const timer = window.setInterval(() => {
+      setPhraseIndex((prev) => (prev + 1) % rotatingPhrases.length);
+    }, 2800);
+    return () => window.clearInterval(timer);
+  }, [reduceMotion]);
+
   const handleScrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -57,21 +74,39 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
             className="flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border-accent-violet/30 bg-accent-violet/5 text-[9px] sm:text-[10px] md:text-xs font-mono font-semibold tracking-widest text-accent-cyan uppercase max-w-full"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse" />
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-accent-cyan opacity-75 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan animate-pulse-ring" />
+            </span>
             <span>Open to Learning • Building • Collaborating</span>
           </motion.div>
 
           {/* Heading */}
           <motion.div variants={itemVariants} className="space-y-2">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-text-primary leading-tight">
-              Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-violet via-accent-blue to-accent-cyan">Kirandeep</span>.
+              Hi, I'm{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-violet via-accent-blue to-accent-cyan animate-gradient">
+                Kirandeep
+              </span>
+              .
             </h1>
             <h2 className="text-xl md:text-3xl font-display font-semibold tracking-tight text-text-secondary">
-              Full-Stack Developer building MERN apps, AI tools, and{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan to-accent-violet font-mono text-glow-cyan">
-                intelligent applications.
-              </span>
+              Full-Stack Developer building MERN apps, AI tools, and
             </h2>
+            <div className="h-8 md:h-10 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={rotatingPhrases[phraseIndex]}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.35 }}
+                  className="text-xl md:text-3xl font-mono font-semibold text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan to-accent-violet text-glow-cyan"
+                >
+                  {rotatingPhrases[phraseIndex]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
           </motion.div>
 
           {/* Description */}
@@ -87,20 +122,24 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
             className="flex flex-wrap items-center gap-3 w-full sm:w-auto"
           >
-            <button
+            <motion.button
               onClick={() => handleScrollTo('projects')}
-              className="flex items-center gap-2 px-5 py-3 rounded-xl bg-accent-violet text-white font-medium text-xs tracking-wider uppercase hover:bg-accent-violet/90 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-all duration-300 w-full sm:w-auto justify-center min-h-11"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="group flex items-center gap-2 px-5 py-3 rounded-xl bg-accent-violet text-white font-medium text-xs tracking-wider uppercase hover:bg-accent-violet/90 hover:shadow-[0_0_24px_rgba(139,92,246,0.45)] transition-all duration-300 w-full sm:w-auto justify-center min-h-11"
             >
               <span>View My Work</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </motion.button>
+            <motion.button
               onClick={() => handleScrollTo('contact')}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 border border-border-primary hover:border-white/20 text-text-primary font-medium text-xs tracking-wider uppercase hover:bg-white/10 transition-all duration-300 w-full sm:w-auto justify-center min-h-11"
             >
               <span>Let's Connect</span>
               <ChevronRight className="w-4 h-4" />
-            </button>
+            </motion.button>
             <a
               href={socialLinks.resume}
               target="_blank"
@@ -154,14 +193,18 @@ export const Hero: React.FC = () => {
           <Terminal />
 
           {/* Floating tech badges under the terminal for visual flair */}
-          <div className="flex flex-wrap gap-2 justify-center mt-6 max-w-sm select-none pointer-events-none">
-            {['React', 'Next.js', 'Node.js', 'Java', 'Python', 'PostgreSQL'].map((tech) => (
-              <span
+          <div className="flex flex-wrap gap-2 justify-center mt-6 max-w-sm">
+            {['React', 'Next.js', 'Node.js', 'Java', 'Python', 'PostgreSQL'].map((tech, idx) => (
+              <motion.span
                 key={tech}
-                className="px-2.5 py-1 rounded bg-black/40 border border-white/5 text-[10px] font-mono text-text-secondary hover:text-text-primary transition-colors"
+                className="animate-float px-2.5 py-1 rounded bg-black/40 border border-white/5 text-[10px] font-mono text-text-secondary"
+                style={{ animationDelay: `${idx * 0.18}s` }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 + idx * 0.06 }}
               >
                 {tech}
-              </span>
+              </motion.span>
             ))}
           </div>
         </motion.div>

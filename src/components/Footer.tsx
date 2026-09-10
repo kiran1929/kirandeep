@@ -24,6 +24,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="w-full border-t border-border-primary bg-black/40 py-10 sm:py-12 px-4 sm:px-6 mt-8 sm:mt-12 relative z-10 select-none pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 bg-gradient-to-r from-transparent via-accent-cyan/50 to-transparent animate-gradient" />
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1.5">
           <a

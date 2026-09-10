@@ -152,15 +152,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
 
   return (
     <motion.div
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -8 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
       onClick={onClick}
-      className="group bg-surface-primary hover:bg-surface-secondary border border-white/5 hover:border-white/15 rounded-xl overflow-hidden shadow-xl hover:shadow-[0_15px_30px_-10px_rgba(139,92,246,0.15)] flex flex-col h-full cursor-pointer transition-all duration-300 pointer-events-auto"
+      className="group relative bg-surface-primary hover:bg-surface-secondary border border-white/5 hover:border-accent-violet/35 rounded-xl overflow-hidden shadow-xl hover:shadow-[0_18px_40px_-12px_rgba(139,92,246,0.28)] flex flex-col h-full cursor-pointer transition-all duration-300 pointer-events-auto"
     >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl z-10">
+        <div className="shine-sweep absolute top-0 bottom-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100" />
+      </div>
       {/* Visual Header Graphic */}
       <div className="h-44 w-full relative overflow-hidden">
-        {renderVisual()}
-        {/* Glow Hover Cover */}
+        <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]">
+          {renderVisual()}
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-surface-primary via-transparent to-transparent opacity-60 pointer-events-none" />
       </div>
 

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { achievements } from '../data/achievements';
 import { Trophy, Code2, Award, Zap } from 'lucide-react';
+import { SectionTitle } from './SectionTitle';
 
 // Count-up helper
 const CountUpValue: React.FC<{ end: number; suffix?: string; prefix?: string }> = ({
@@ -79,16 +80,7 @@ export const Achievements: React.FC = () => {
 
   return (
     <section id="achievements" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
-      {/* Title */}
-      <div className="flex flex-col items-start text-left mb-12">
-        <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
-          05 / Verification
-        </span>
-        <h2 className="text-2xl md:text-4xl font-display font-bold text-text-primary">
-          Proof of Practice
-        </h2>
-        <div className="h-[2px] w-12 bg-gradient-to-r from-accent-cyan to-accent-violet mt-3" />
-      </div>
+      <SectionTitle index="05 / Verification" title="Proof of Practice" />
 
       {/* Grid container */}
       <motion.div

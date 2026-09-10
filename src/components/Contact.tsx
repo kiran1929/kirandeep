@@ -4,6 +4,7 @@ import { Mail, Phone, Copy, Check, FileDown } from 'lucide-react';
 import { Github, Linkedin, HackerRank, Codeforces, LeetCode } from './Icons';
 import { useInView } from '../hooks/useInView';
 import { profileAccounts, socialLinks } from '../data/social';
+import { SectionTitle } from './SectionTitle';
 
 const accountIcons = {
   github: Github,
@@ -46,18 +47,12 @@ export const Contact: React.FC = () => {
     <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto overflow-hidden">
       <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-accent-violet/5 blur-[120px] pointer-events-none -z-10" />
 
-      <div className="flex flex-col items-center text-center mb-12">
-        <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
-          08 / Connection
-        </span>
-        <h2 className="text-2xl md:text-4xl font-display font-bold text-text-primary">
-          Let's Build Something.
-        </h2>
-        <div className="h-[2px] w-12 bg-gradient-to-r from-accent-cyan to-accent-violet mt-3" />
-        <p className="text-xs md:text-sm text-text-secondary max-w-md font-light leading-relaxed mt-4">
-          Have an idea, project, or opportunity? Reach me directly on email, LinkedIn, GitHub, or the coding platforms I use daily.
-        </p>
-      </div>
+      <SectionTitle
+        index="08 / Connection"
+        title="Let's Build Something."
+        align="center"
+        subtitle="Have an idea, project, or opportunity? Reach me directly on email, LinkedIn, GitHub, or the coding platforms I use daily."
+      />
 
       <div
         ref={ref}
@@ -147,7 +142,7 @@ export const Contact: React.FC = () => {
                 href={account.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-4 sm:p-5 rounded-xl glass-panel bg-surface-primary hover:bg-surface-secondary border border-white/5 hover:border-accent-cyan/20 transition-all duration-300 flex flex-col justify-between items-start text-left min-h-28 gap-4"
+                className="group p-4 sm:p-5 rounded-xl glass-panel bg-surface-primary hover:bg-surface-secondary border border-white/5 hover:border-accent-cyan/20 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between items-start text-left min-h-28 gap-4"
               >
                 <div className="p-3 rounded-lg bg-black/40 text-accent-cyan group-hover:text-white group-hover:bg-accent-blue/80 transition-all">
                   <Icon className="w-5 h-5" />

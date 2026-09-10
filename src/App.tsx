@@ -14,6 +14,8 @@ import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { CommandPalette } from './components/CommandPalette';
 import { AnimatedBackground } from './components/AnimatedBackground';
+import { ScrollProgress } from './components/ScrollProgress';
+import { TechMarquee } from './components/TechMarquee';
 import { Terminal, Sparkles } from 'lucide-react';
 
 export default function App() {
@@ -95,6 +97,7 @@ export default function App() {
   return (
     <div className="relative text-text-primary bg-bg-dark min-h-screen selection:bg-accent-violet/30 selection:text-white antialiased">
       {/* Premium Cursor (Desktop only) */}
+      <ScrollProgress />
       <CustomCursor />
 
       {/* Global Command Palette */}
@@ -111,7 +114,8 @@ export default function App() {
         {/* Hero Section */}
         <Hero />
 
-        {/* Separator lines */}
+        <TechMarquee />
+
         <div className="w-full max-w-7xl px-4 sm:px-6 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
         {/* About Section */}

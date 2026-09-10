@@ -10,6 +10,7 @@ import {
   Wrench, 
   Lightbulb 
 } from 'lucide-react';
+import { SectionTitle } from './SectionTitle';
 
 const categoryIcons = {
   languages: Code2,
@@ -61,16 +62,7 @@ export const Skills: React.FC = () => {
 
   return (
     <section id="skills" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
-      {/* Title */}
-      <div className="flex flex-col items-start text-left mb-12">
-        <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
-          02 / Technologies
-        </span>
-        <h2 className="text-2xl md:text-4xl font-display font-bold text-text-primary">
-          Technologies I Work With
-        </h2>
-        <div className="h-[2px] w-12 bg-gradient-to-r from-accent-cyan to-accent-violet mt-3" />
-      </div>
+      <SectionTitle index="02 / Technologies" title="Technologies I Work With" />
 
       {/* Category Tabs */}
       <div className="flex flex-wrap gap-2 justify-start mb-8 select-none">
@@ -112,6 +104,7 @@ export const Skills: React.FC = () => {
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+        layout
       >
         {filteredSkills.map((skill) => {
           const Icon = categoryIcons[skill.category];
@@ -120,6 +113,7 @@ export const Skills: React.FC = () => {
           return (
             <motion.div
               key={skill.name}
+              layout
               variants={itemVariants}
               whileHover={{ y: -4, scale: 1.02 }}
               className={`group p-4 rounded-xl glass-panel bg-surface-primary hover:bg-surface-secondary border border-white/5 transition-all duration-300 flex flex-col justify-between items-start text-left gap-4 overflow-hidden relative ${colorClass}`}

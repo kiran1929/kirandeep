@@ -79,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             <span className="text-accent-violet transition-colors group-hover:text-accent-cyan">[</span>
             <span className="relative">
               KG
-              <span className="absolute -inset-0.5 rounded-sm bg-accent-violet/30 blur opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="absolute -inset-0.5 rounded-sm bg-accent-violet/30 blur opacity-40 group-hover:opacity-100 transition-opacity" />
             </span>
             <span className="text-accent-violet transition-colors group-hover:text-accent-cyan">]</span>
           </a>

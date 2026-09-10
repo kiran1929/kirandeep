@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { Award, Code2, GraduationCap, Trophy } from 'lucide-react';
+import { SectionTitle } from './SectionTitle';
 
 // Count-up helper component
 const CountUp: React.FC<{ end: number; decimals?: number; duration?: number; suffix?: string }> = ({
@@ -97,16 +98,7 @@ export const About: React.FC = () => {
 
   return (
     <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
-      {/* Title */}
-      <div className="flex flex-col items-start text-left mb-12">
-        <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
-          01 / Biography
-        </span>
-        <h2 className="text-2xl md:text-4xl font-display font-bold text-text-primary">
-          About Me
-        </h2>
-        <div className="h-[2px] w-12 bg-gradient-to-r from-accent-cyan to-accent-violet mt-3" />
-      </div>
+      <SectionTitle index="01 / Biography" title="About Me" />
 
       <div 
         ref={ref}
@@ -154,8 +146,10 @@ export const About: React.FC = () => {
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
+                whileHover={{ y: -4, scale: 1.02 }}
+                transition={{ duration: 0.25 }}
                 className="p-4 rounded-xl glass-panel bg-surface-primary hover:bg-surface-secondary hover:border-white/15 transition-all duration-300 flex flex-col items-start text-left gap-3"
               >
                 <div className={`p-2 rounded-lg border ${stat.color}`}>
@@ -172,7 +166,7 @@ export const About: React.FC = () => {
                     {stat.sub}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </motion.div>

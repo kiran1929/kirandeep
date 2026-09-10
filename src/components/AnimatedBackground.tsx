@@ -59,6 +59,28 @@ export const AnimatedBackground: React.FC = () => {
         <div className="absolute left-[70%] top-0 w-[1px] h-full bg-gradient-to-b from-transparent via-accent-cyan/10 to-transparent" />
       </div>
 
+      {Array.from({ length: 16 }).map((_, i) => (
+        <motion.span
+          key={i}
+          className="absolute h-[2px] w-[2px] rounded-full bg-accent-cyan/50"
+          style={{
+            left: `${(i * 19 + 7) % 100}%`,
+            top: `${(i * 13 + 11) % 100}%`,
+          }}
+          animate={{
+            opacity: [0.15, 0.8, 0.15],
+            y: [0, -18, 0],
+            scale: [1, 1.4, 1],
+          }}
+          transition={{
+            duration: 5 + (i % 4),
+            repeat: Infinity,
+            delay: i * 0.25,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+
       {/* Grain / Noise Texture Overlay */}
       <div 
         className="absolute inset-0 opacity-[0.02] mix-blend-overlay"

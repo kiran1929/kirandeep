@@ -3,22 +3,14 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { educationList } from '../data/education';
 import { GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { SectionTitle } from './SectionTitle';
 
 export const Education: React.FC = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
     <section id="education" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
-      {/* Title */}
-      <div className="flex flex-col items-start text-left mb-12">
-        <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
-          06 / Academics
-        </span>
-        <h2 className="text-2xl md:text-4xl font-display font-bold text-text-primary">
-          Education
-        </h2>
-        <div className="h-[2px] w-12 bg-gradient-to-r from-accent-cyan to-accent-violet mt-3" />
-      </div>
+      <SectionTitle index="06 / Academics" title="Education" />
 
       <div 
         ref={ref}

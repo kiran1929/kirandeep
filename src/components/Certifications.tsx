@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { certifications } from '../data/certifications';
 import { ShieldCheck, CheckCircle } from 'lucide-react';
+import { SectionTitle } from './SectionTitle';
 
 export const Certifications: React.FC = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
@@ -28,16 +29,7 @@ export const Certifications: React.FC = () => {
 
   return (
     <section id="certifications" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
-      {/* Title */}
-      <div className="flex flex-col items-start text-left mb-12">
-        <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
-          07 / Accreditations
-        </span>
-        <h2 className="text-2xl md:text-4xl font-display font-bold text-text-primary">
-          Certifications
-        </h2>
-        <div className="h-[2px] w-12 bg-gradient-to-r from-accent-cyan to-accent-violet mt-3" />
-      </div>
+      <SectionTitle index="07 / Accreditations" title="Certifications" />
 
       {/* Cards List */}
       <motion.div

@@ -3,21 +3,14 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { Calendar, Briefcase, ChevronRight } from 'lucide-react';
 import { experienceList } from '../data/experience';
+import { SectionTitle } from './SectionTitle';
 
 export const Experience: React.FC = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
     <section id="experience" className="py-16 sm:py-24 px-4 sm:px-6 relative max-w-7xl mx-auto">
-      <div className="flex flex-col items-start text-left mb-12">
-        <span className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase mb-2">
-          04 / Journey
-        </span>
-        <h2 className="text-2xl md:text-4xl font-display font-bold text-text-primary">
-          Training & Experience
-        </h2>
-        <div className="h-[2px] w-12 bg-gradient-to-r from-accent-cyan to-accent-violet mt-3" />
-      </div>
+      <SectionTitle index="04 / Journey" title="Training & Experience" />
 
       <div ref={ref} className="relative max-w-3xl mx-auto">
         <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2">
